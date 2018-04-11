@@ -10,7 +10,10 @@ import java.net.MalformedURLException;
 public class GmailTest {
     static WebDriver driver;
     static String gmailLogin = "web.xmm@gmail.com";
-    static String gmailPassword = "Dakota666";
+    static String gmailPassword = "asd";
+
+    static String gmailLogin2 = "mrmourax@gmail.com";
+    static String gmailPassword2 = "asd";
 
     @BeforeClass
     public static void preTest() throws MalformedURLException {
@@ -25,6 +28,26 @@ public class GmailTest {
         //driver.quit();
     }
 
+    //bulder patttern po4itat
+
+    @Test
+    public void twoUsers() throws InterruptedException {
+        //first user
+        LoginPage lp = new LoginPage(driver)
+                .openPage()
+                .login(gmailLogin, gmailPassword)
+                .sendEmail("mrmourax@gmail.com", "Test Selenium", "Hello, this is test message")
+                .logout();
+
+
+
+        //second user
+        lp.login(gmailLogin2, gmailPassword2)
+             .findEmailBySubject("Hello, this is test message")
+             .logout();
+
+    }
+
     @Test
     public void loginLogout() throws InterruptedException {
 
@@ -36,7 +59,7 @@ public class GmailTest {
         //gp = lp.login(gmailLogin, gmailPassword);
         lp.login(gmailLogin, gmailPassword);
         gp.sendEmail("web.xmm@gmail.com", "Test Selenium", "Hello, this is test message");
-        gp.findEmailBySubject();
+        gp.findEmailBySubject("Hello, this is test message");
         //gp.checkIsSentFolder();
         //gp.logout();
         Thread.sleep(2000);
