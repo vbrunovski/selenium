@@ -1,8 +1,9 @@
+package github;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class GithubTest {
     static WebDriver driver;
@@ -12,7 +13,7 @@ public class GithubTest {
 
     private static String URL = "https://github.com";
     private static String username = "mrmourax@gmail.com";
-    private static String password = "dakota00";
+    private static String password = "asdasd";
 
     @BeforeClass
     public static void SetUp(){

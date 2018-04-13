@@ -1,3 +1,5 @@
+package gmail;
+
 import org.hamcrest.CoreMatchers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,18 +27,27 @@ public class LoginPage {
         System.out.print(value);
     }
 
-    public GmailPage login(String login, String password) throws InterruptedException {
+    public LoginPage openPage() {
         driver.get(gmailUrl);
         //maximize window
         driver.manage().window().maximize();
 
-        if(!driver.findElements(By.cssSelector("input#identifierId")).isEmpty()){
-            WebElement elLogin = driver.findElement(By.cssSelector("input#identifierId"));
-            elLogin.sendKeys(login);
-            WebElement elClick = driver.findElement(By.xpath("//content/span[contains(text(),'Next')]"));
-            elClick.click();
+        return this;
+    }
+
+    public GmailPage login(String login, String password) throws InterruptedException {
+        if(driver.findElements(By.cssSelector("input#identifierId")).isEmpty()){
+
+            driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div/div[2]/div")).click();
+            Thread.sleep(2000);
+            driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div[2]/form/div[2]/div/div/div/ul[1]/li[2]")).click();
 
         }
+        Thread.sleep(2000);
+        WebElement elLogin = driver.findElement(By.cssSelector("input#identifierId"));
+        elLogin.sendKeys(login);
+        WebElement elClick = driver.findElement(By.xpath("//content/span[contains(text(),'Next')]"));
+        elClick.click();
 
 
         //WebElement elPass = driver.findElement(By.xpath("//div/input[@name='password']"));

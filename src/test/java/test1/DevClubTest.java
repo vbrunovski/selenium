@@ -1,3 +1,5 @@
+package test1;
+
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;

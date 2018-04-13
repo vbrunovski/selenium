@@ -1,3 +1,5 @@
+package gmail;
+
 import static org.junit.Assert.*;
 
 import org.hamcrest.CoreMatchers;
@@ -45,8 +47,10 @@ public class GmailPage {
         WebElement clickToSendEl = driver.findElement(By.xpath("//div/div[@class='T-I J-J5-Ji aoO T-I-atl L3']"));
         clickToSendEl.click();
 
+        Thread.sleep(2000);
+
         //esli okno ne vidimo
-        if(driver.findElements(By.xpath("//div/div/div[@class='nH Hd']")).isEmpty()){
+        if(!driver.findElements(By.xpath("//div/div/div[@class='nH Hd']")).isEmpty()){
 
             fail("Send message dialog is still visible");
         }
@@ -75,18 +79,24 @@ public class GmailPage {
 
 
 
-    public GmailPage findEmailBySubject() throws InterruptedException {
+    public GmailPage findEmailBySubject(String subject) throws InterruptedException {
         // spisok pisem i naiti pismo s takim subjectom i kliknut po nemu
         WebElement we = driver.findElement(By.xpath("/html/body/div[7]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div/div/div/div[2]/div/div[1]/div[1]/div/div[1]/div/div/div[2]/span/a"));
         we.click();
         Thread.sleep(2000);
         WebElement findEmail = driver.findElement(By.xpath("/html/body/div[7]/div[3]/div[1]/div[2]/div[1]/div[2]/div/div/div/div/div[2]/div/div[1]/div/div/div[6]/div/div[1]/div[2]/div/table/tbody/tr[1]/td[6]/div/div/div/span[2]"));
         findEmail.click();
-        Thread.sleep(1000);
-        WebElement bodyText = driver.findElement(By.xpath("//div/div/div[.='Hello, this is test message']"));
+        Thread.sleep(2000);
+
+        //
+        if(!driver.findElements(By.xpath("//div/div[@data-tooltip=\"Показать скрытую часть\"]")).isEmpty()){
+            driver.findElement(By.xpath("//div/div[@data-tooltip=\"Показать скрытую часть\"]")).click();
+        }
+
+        WebElement bodyText = driver.findElement(By.xpath("//div/div/div[.='"+ subject+ "']"));
         String text = bodyText.getText();
-        assertEquals("Hello, this is test message", text);
-        System.out.println("Telo pisma: " + bodyText);
+        //assertEquals("Hello, this is test message", text);
+        System.out.println("Telo pisma: " + text);
         return this;
     }
 }

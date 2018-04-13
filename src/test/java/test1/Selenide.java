@@ -1,3 +1,5 @@
+package test1;
+
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.BeforeClass;
 import org.junit.Test;
