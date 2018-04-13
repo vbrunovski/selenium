@@ -8,9 +8,13 @@ public class RegStep2 extends Page {
 
     private final By hairServiceCheckbox = By.xpath("//ul/li[.='Hair service']/span[@class='icon check-icon glyphicon glyphicon-unchecked']");
     private final By deleteIcon = By.xpath("//*[@id=\"step-2\"]/div/div[2]/div/div[2]/app-service-manager/table/tbody/tr[4]/td[4]/i");
-    private final By duration1 = By.xpath("//*[@id=\"step-2\"]/div/div[2]/div/div[2]/app-service-manager/table/tbody/tr[2]/td[2]/input");
-    private final By price1 = By.xpath("//*[@id=\"step-2\"]/div/div[2]/div/div[2]/app-service-manager/table/tbody/tr[2]/td[3]/input");
-
+    private final By duration1 = By.xpath("/html/body/div/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/app-service-manager/table/tbody/tr[2]/td[2]/input");
+    private final By price1 = By.xpath("/html/body/div/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/app-service-manager/table/tbody/tr[2]/td[3]/input");
+    private final By duration2 = By.xpath("/html/body/div/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/app-service-manager/table/tbody/tr[3]/td[2]/input");
+    private final By price2 = By.xpath("/html/body/div/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/app-service-manager/table/tbody/tr[3]/td[3]/input");
+    private final By duration3 = By.xpath("/html/body/div/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/app-service-manager/table/tbody/tr[4]/td[2]/input");
+    private final By price3 = By.xpath("/html/body/div/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/app-service-manager/table/tbody/tr[4]/td[3]/input");
+    private final By skipBtn = By.xpath("/html/body/div/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/app-service-manager/div/a");
 
     public RegStep2(WebDriver driver) {
         this.driver = driver;
@@ -36,8 +40,13 @@ public class RegStep2 extends Page {
     }
 
     RegStep2 fillPriceAndDuration(String duration, String price) {
-        driver.findElement(duration1).click();
-        driver.findElement(price1).click();
+        writeInput(duration1, duration);
+        writeInput(price1, price);
+        writeInput(duration2, duration);
+        writeInput(price2, price);
+        writeInput(duration3, duration);
+        writeInput(price3, price);
+        click(skipBtn);
         return this;
     }
 }
