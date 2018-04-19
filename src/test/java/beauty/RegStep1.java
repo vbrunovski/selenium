@@ -28,7 +28,7 @@ public class RegStep1 extends Page {
     }
 
     @Override
-    WebDriver getDriver() {
+    protected WebDriver getDriver() {
         return driver;
     }
 
@@ -83,5 +83,6 @@ public class RegStep1 extends Page {
             langSelect.selectByVisibleText(lang);
         }
         return this;
+
     }
 }

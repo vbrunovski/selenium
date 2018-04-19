@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public abstract class Page {
 
-    abstract WebDriver getDriver();
+    protected abstract WebDriver getDriver();
 
     //scroll to specific element
     void scrollToElement(By by){
@@ -38,5 +38,5 @@ public abstract class Page {
 
     boolean isElementVisible(By by) {
         return !getDriver().findElements(by).isEmpty();
-    }
+}
 }

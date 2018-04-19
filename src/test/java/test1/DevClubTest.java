@@ -43,6 +43,17 @@ public class DevClubTest {
 		//driver.quit();
 	}
 
+	@Test
+	public void test1(){
+		driver.get("http://petromaks.ee");
+		List<WebElement> elements = driver.findElements(By.className("alignnone"));
+		System.out.print(elements);
+
+
+	}
+
+
+
 
 	@Test
 	public void gmailLogin() throws InterruptedException{

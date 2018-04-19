@@ -1,7 +1,9 @@
 package beauty;
 
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,9 +22,11 @@ public class ListeoTest extends Page {
     private final By clickNextBtn = By.xpath("//content/span[contains(text(),'Next')]");
     private final By googlePassword = By.cssSelector("input[name='password']");
     private final By clickNextBtn2 = By.xpath("//div[@id='passwordNext']");
+    private RegStep4 regStep4;
+
 
     @Override
-    WebDriver getDriver() {
+    protected WebDriver getDriver() {
         return driver;
     }
 
@@ -31,6 +35,10 @@ public class ListeoTest extends Page {
         System.setProperty("webdriver.chrome.driver","C:\\Users\\vitali.brunovski\\downloads\\chromedriver_win32\\chromedriver.exe");
         System.setProperty("webdriver.gecko.driver","C:\\Users\\vitali.brunovski\\downloads\\geckodriver-v0.20.0-win64\\geckodriver.exe");
         driver = new FirefoxDriver();
+    }
+
+    public RegStep1 loginFacebook(String username, String password){
+        return new RegStep1(driver);
     }
 
     public RegStep1 loginGmail(String username, String password){
@@ -47,6 +55,7 @@ public class ListeoTest extends Page {
         driver.findElement(clickNextBtn2).click();
         sleep(2);
         return new RegStep1(driver);
+
     }
 
     //RoseP0nyDreamS
@@ -55,13 +64,21 @@ public class ListeoTest extends Page {
         driver.get(URL);
         driver.manage().window().maximize();
         //String authString = new String(Base64.encodeBase64(("beauty" + ":" + "RoseP0nyDreamS").getBytes()));
-        loginGmail(username, password)
-            .scrollToForm()
-            .fillRegistration("Test", "Test", "web.xmm@gmail.com", "58104459", "Estonia", "Tallinn", 0,"Test Address", "12345", "English", "Eesti")
-            .clickSkip()
-            .selectFirst3servives()
-            .scrollTop()
-            .fillPriceAndDuration("10", "11.50");
+        regStep4 = loginGmail(username, password)
+                .scrollToForm()
+                .fillRegistration("Test", "Test", "web.xmm@gmail.com", "58104459", "Estonia", "Tallinn", 0, "Test Address", "12345", "English", "Eesti")
+                .clickSkip()
+                .selectFirst3servives()
+                .scrollTop()
+                .fillPriceAndDuration("10", "11.50")
+                .clickSkip()
+                .openingHours("00:00", "06:00")
+                .clickContinue()
+                .imageUpload("test.jpg")
+                .finishBtn();
+
+
+
 
     }
 
