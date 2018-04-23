@@ -12,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -37,6 +38,7 @@ public class DataDrivenTesting {
         System.setProperty("webdriver.chrome.driver","C:\\Users\\vitali.brunovski\\downloads\\chromedriver_win32\\chromedriver.exe");
         System.setProperty("webdriver.gecko.driver","C:\\Users\\vitali.brunovski\\downloads\\geckodriver-v0.20.0-win64\\geckodriver.exe");
         driver = new ChromeDriver();
+        //driver = new HtmlUnitDriver();
         driver.get("https://www.github.com/");
     }
 
@@ -51,11 +53,11 @@ public class DataDrivenTesting {
                 { "Testeruser1",  "email1@email.com", "password" },
                 { "Testeruser2",  "email2@email.com", "password" },
                 { "Testeruser3",  "email3@email.com", "password" },
-                { "Testeruser4", "email4@email.com", "password" } });
+                { "Testeruser4",  "email4@email.com", "password" } });
     }
 
     @Test
-    public void testFacebookRegistration() throws Exception {
+    public void testGithubRegistration() throws Exception {
         /*
         WebDriverWait wait = new WebDriverWait(driver, 20);
         try {
