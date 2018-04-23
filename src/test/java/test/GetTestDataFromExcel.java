@@ -23,11 +23,12 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.fail;
+
 public class GetTestDataFromExcel {
     static WebDriver driver;
     private String baseUrl;
     private StringBuffer verificationErrors = new StringBuffer();
-    public static String fileToBeRead = "С:\\test.xls";
 
     @BeforeClass
     public static void SetUp() throws MalformedURLException {
@@ -40,43 +41,44 @@ public class GetTestDataFromExcel {
     public void getDataFromExcel() {
 
         try {
-                // Specify the path of file
-                File src = new File("C:\\test.xlsx");
+            // Specify the path of file
+            File src = new File(getClass().getClassLoader().getResource("test.xlsx").toURI());
 
-                // load file
-                FileInputStream fis = new FileInputStream(src);
+            // load file
+            FileInputStream fis = new FileInputStream(src);
 
-                // Load workbook
-                XSSFWorkbook wb = new XSSFWorkbook(fis);
+            // Load workbook
+            XSSFWorkbook wb = new XSSFWorkbook(fis);
 
-                // Load sheet- Here we are loading first sheetonly
-                XSSFSheet sh1 = wb.getSheetAt(0);
+            // Load sheet- Here we are loading first sheetonly
+            XSSFSheet sh1 = wb.getSheetAt(0);
 
-                String name = "no value";
-                String email = "no value";
-                String pass = "no value";
+            String name = "no value";
+            String email = "no value";
+            String pass = "no value";
 
-                //List<Person> people = new ArrayList<Person>();
+            //List<Person> people = new ArrayList<Person>();
 
-                for (int i = sh1.getFirstRowNum(); i <= sh1.getLastRowNum(); i++) {
-                    Row row = sh1.getRow(i);
-                    for (int j = row.getFirstCellNum(); j < row.getLastCellNum(); j++) {
-                        String cellValue = row.getCell(j).getStringCellValue();
-                        //System.out.println(cellValue);
-                        if(j == 0){
-                            name = cellValue;
-                        }
-                        else if(j == 1){
-                            email = cellValue;
-                        }
-                        else if(j == 2){
-                            pass = cellValue;
-                        }
-
+            for (int i = sh1.getFirstRowNum(); i <= sh1.getLastRowNum(); i++) {
+                Row row = sh1.getRow(i);
+                for (int j = row.getFirstCellNum(); j < row.getLastCellNum(); j++) {
+                    String cellValue = row.getCell(j).getStringCellValue();
+                    //System.out.println(cellValue);
+                    if(j == 0){
+                        name = cellValue;
                     }
-                    System.out.println(name + " " + email + " " + pass);
+                    else if(j == 1){
+                        email = cellValue;
+                    }
+                    else if(j == 2){
+                        pass = cellValue;
+                    }
 
-                    driver.get("https://github.com");
+                }
+                System.out.println(name + " " + email + " " + pass);
+
+                driver.get("https://github.com");
+
                 WebElement usernameG = driver.findElement(By.xpath("//*[@id=\"user[login]\"]"));
                 usernameG.sendKeys(name);
                 WebElement emailG = driver.findElement(By.xpath("//*[@id=\"user[email]\"]"));
@@ -86,11 +88,9 @@ public class GetTestDataFromExcel {
 
             }
 
-
         } catch (Exception e) {
-
-            System.out.println(e.getMessage());
-
+            e.printStackTrace();
+            fail(e.getMessage());
         }
     }
 }
