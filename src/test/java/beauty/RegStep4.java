@@ -1,6 +1,7 @@
 package beauty;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -32,7 +33,9 @@ public class RegStep4 extends Page {
     public RegStep4 finishBtn(){
         sleep(3);
         scrollToElement(elToScroll);
-        //click(finishBtn);
+
+        sleep(1);
+        driver.findElement(finishBtn).submit();
         return new RegStep4(driver);
 
     }

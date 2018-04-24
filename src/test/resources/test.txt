@@ -1,1 +1,1 @@
-alexander123 alex@mail.com qwerty100500
+alexander123,alex@mail.com,qwerty100500

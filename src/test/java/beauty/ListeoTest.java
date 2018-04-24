@@ -23,6 +23,8 @@ public class ListeoTest extends Page {
     private final By googlePassword = By.cssSelector("input[name='password']");
     private final By clickNextBtn2 = By.xpath("//div[@id='passwordNext']");
     private RegStep4 regStep4;
+    DashboardServicesPage dsp = new DashboardServicesPage(driver);
+    DashboardWorkingShedulePage dwsp = new DashboardWorkingShedulePage(driver);
 
 
     @Override
@@ -76,10 +78,15 @@ public class ListeoTest extends Page {
                 .clickContinue()
                 .imageUpload("test.jpg")
                 .finishBtn();
+    }
 
-
-
-
+    @Test
+    public void checkDashboard(){
+        driver.get(URL);
+        driver.manage().window().maximize();
+        loginGmail(username, password);
+        dsp.Services().fillPriceAndDuration("10", "11.50").clickSave().clickWorkingShedule();
+        dwsp.MyShedule("07:00");
     }
 
     @Test

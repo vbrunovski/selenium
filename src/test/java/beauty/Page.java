@@ -15,6 +15,11 @@ public abstract class Page {
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView();", el);
     }
 
+    void scrollToElementByPixel(int x, int y){
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("window.scrollBy(0,800)");
+    }
+
     WebElement writeInput(By by, String text) {
         WebElement el = getDriver().findElement(by);
         el.sendKeys(text);
