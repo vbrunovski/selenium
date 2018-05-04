@@ -57,11 +57,8 @@ public class test implements GenericTest {
     	public List<SearchRecord> resources;
 	}
 
-    @Test
-    public void search() throws IOException {
-
-    	String query = "hair";
-    	String url = baseUrl + "/api/search/suggestions/" + query;
+	SearchResult searchSuggestion(String query) {
+		String url = baseUrl + "/api/search/suggestions/" + query;
 		Request request = new Request.Builder()
 				.get()
 				.url(url)
@@ -73,9 +70,24 @@ public class test implements GenericTest {
 			}
 			String body = response.body().string();
 			System.out.println(body);
-			SearchResult result = objectMapper.readValue(body,SearchResult.class );
-			//assertEquals("Barber", result.categories.get(0).name);
+
+			return objectMapper.readValue(body, SearchResult.class );
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
 		}
+	}
+
+    @Test
+    public void search() throws IOException {
+		SearchResult result = searchSuggestion("barber");
+		assertEquals(1, result.categories.size());
+		assertEquals("Barber", result.categories.get(0).name);
+
+		result = searchSuggestion("hair");
+		assertEquals(5, result.categories.size());
+		assertEquals(32, result.services.size());
+    	assertEquals("Hair care", result.categories.get(0).name);
 
 	}
 
