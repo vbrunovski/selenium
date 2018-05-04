@@ -4,5 +4,5 @@ target
 
 # Log file
 *.log
-
+test.properties
 build
