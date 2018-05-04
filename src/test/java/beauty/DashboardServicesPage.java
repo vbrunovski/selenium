@@ -29,7 +29,7 @@ public class DashboardServicesPage extends Page {
         this.driver = driver;
     }
 
-    DashboardServicesPage Services(){
+    DashboardServicesPage services(){
         click(servicesLink);
         driver.findElement(hairServiceCheckbox).click();
 
@@ -49,14 +49,15 @@ public class DashboardServicesPage extends Page {
         return this;
     }
 
-    DashboardServicesPage  clickSave(){
+    DashboardServicesPage clickSave(){
         scrollToElement(scrollToEl);
         click(saveBtn);
         return this;
     }
 
-    public void clickWorkingShedule(){
+    public DashboardWorkingShedulePage clickWorkingShedule(){
         click(clickWorkingSheduleLink);
+        return new DashboardWorkingShedulePage(driver);
     }
 
 }

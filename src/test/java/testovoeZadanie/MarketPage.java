@@ -23,7 +23,7 @@ public class MarketPage extends Functions {
     private final By honorDevice = By.xpath("//*[@id=\"search-prepack\"]/div/div/div[2]/div/div[1]/div[4]/fieldset/ul/li[3]/div/a/label/div");
     private final By huaweiDevice = By.xpath("//*[@id=\"search-prepack\"]/div/div/div[2]/div/div[1]/div[4]/fieldset/ul/li[4]/div/a/label/div");
     private final By lgDevice = By.xpath("//*[@id=\"search-prepack\"]/div/div/div[2]/div/div[1]/div[4]/fieldset/ul/li[5]/div/a/label/div");
-    private final By scrollToDown = By.xpath("/html/body/div[1]/div[4]/div[2]/div[1]/div[2]/div/div[3]/span/button");
+    private final By scrollToDown = By.xpath("/html/body/div[1]/div[4]/div[2]/div[1]/div[2]/div/div[2]/div[1]/a");
     private final By elementCountText = By.xpath("/html/body/div[1]/div[4]/div[2]/div[1]/div[2]/div/div[3]/span/button/span");
 
 
@@ -40,7 +40,7 @@ public class MarketPage extends Functions {
         driver.findElement(mobileSection).click();
     }
 
-    public void clickToPriceRange(){
+    public void clickToPriceRange() throws InterruptedException {
         driver.findElement(priceEnd).sendKeys("80000");
         scrollToElement(scrollToEl1);
         driver.findElement(screenSize).click();
@@ -51,6 +51,8 @@ public class MarketPage extends Functions {
         driver.findElement(honorDevice).click();
         driver.findElement(huaweiDevice).click();
         driver.findElement(lgDevice).click();
+
+        Thread.sleep(1000);
     }
 
     public void checkElementCount(){

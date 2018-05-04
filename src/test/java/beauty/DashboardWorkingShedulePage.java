@@ -2,6 +2,8 @@ package beauty;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -21,8 +23,14 @@ public class DashboardWorkingShedulePage extends Page{
         this.driver = driver;
     }
 
-    public void MyShedule(String timeEnd){
-        click(sunday);
+
+
+    public void myShedule(Weekday weekDay, String timeEnd){
+        WebElement elem = driver.findElement(sunday);
+        //click on coordinates
+        Actions builder = new Actions(driver);
+        builder.moveToElement(elem , weekDay.offsetX, 0).click().build().perform();
+        //click(sunday);
 
         //copy
         StringSelection ss = new StringSelection(timeEnd);

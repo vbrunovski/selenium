@@ -1,38 +1,38 @@
 package beauty;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import gmail.LoginPage;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class Page {
 
     protected abstract WebDriver getDriver();
 
     //scroll to specific element
-    void scrollToElement(By by){
+    public void scrollToElement(By by){
         WebElement el = getDriver().findElement(by);
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView();", el);
     }
 
-    void scrollToElementByPixel(int x, int y){
+    public void scrollToElementByPixel(int x, int y){
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("window.scrollBy(0,800)");
     }
 
-    WebElement writeInput(By by, String text) {
+    public WebElement writeInput(By by, String text) {
         WebElement el = getDriver().findElement(by);
         el.sendKeys(text);
         return el;
     }
 
-    WebElement click(By by) {
+    public WebElement click(By by) {
         WebElement el = getDriver().findElement(by);
         el.click();
         return el;
     }
 
-    void sleep(int seconds) {
+    public void sleep(int seconds) {
         try {
             Thread.sleep(seconds * 1000);
         } catch (InterruptedException e) {
@@ -41,7 +41,25 @@ public abstract class Page {
         }
     }
 
-    boolean isElementVisible(By by) {
+    public boolean isElementVisible(By by) {
+
         return !getDriver().findElements(by).isEmpty();
-}
+    }
+
+   //incognito mode
+    protected CharSequence getNewIncognitoWindowCommand() {
+        return Keys.chord(Keys.CONTROL, Keys.SHIFT, "p");
+    }
+
+    protected final WebElement getKeystrokeTarget(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("body")));
+    }
+
+    public final void newIncognitoWindow(WebDriver driver) {
+        WebElement target = getKeystrokeTarget(driver);
+        target.sendKeys(getNewIncognitoWindowCommand());
+    }
+
+
 }
