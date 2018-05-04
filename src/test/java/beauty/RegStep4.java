@@ -1,9 +1,8 @@
 package beauty;
 
+import common.Page;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -18,16 +17,8 @@ public class RegStep4 extends Page {
     private final By finishBtn = By.xpath("//*[@id=\"next1\"]");
     private final By elToScroll = By.xpath("/html/body/div/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[4]/div/app-user-uploads/div[1]/h3");
 
-    static WebDriver driver;
-    @Override
-    protected WebDriver getDriver() {
-        return driver;
-    }
-
-
-
     public RegStep4(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public RegStep4 finishBtn(){

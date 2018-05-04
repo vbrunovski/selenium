@@ -1,11 +1,10 @@
 package beauty;
 
+import common.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class RegStep2 extends Page {
-    private WebDriver driver;
-
     private final By skipBtn = By.xpath("/html/body/div/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/app-service-manager/div/a");
     private final By hairServiceCheckbox = By.xpath("//ul/li[.='Hair service']/span[@class='icon check-icon glyphicon glyphicon-unchecked']");
     private final By deleteIcon = By.xpath("//*[@id=\"step-2\"]/div/div[2]/div/div[2]/app-service-manager/table/tbody/tr[4]/td[4]/i");
@@ -18,12 +17,7 @@ public class RegStep2 extends Page {
     //private final By skipBtn = By.xpath("/html/body/div/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/app-service-manager/div/a");
 
     public RegStep2(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    @Override
-    protected WebDriver getDriver() {
-        return driver;
+        super(driver);
     }
 
     RegStep2 selectFirst3servives() {

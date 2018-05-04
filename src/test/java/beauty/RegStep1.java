@@ -1,13 +1,12 @@
 package beauty;
 
+import common.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class RegStep1 extends Page {
-
-    private final WebDriver driver;
 
     //private final By becomeProviderBtn = By.xpath("//*[@id=\"bs-example-navbar-collapse-1\"]/ul[2]/li[2]/a");
     //private final By createAccountBtn = By.xpath("//*[@id=\"wrapper\"]/app-root/app-site-layout/div/app-provider-intro/div/div[3]/div/a");
@@ -24,12 +23,7 @@ public class RegStep1 extends Page {
     private final By skipBtn = By.xpath("//div/form/div/div/a[@class='button preview pull-right']");
 
     public RegStep1(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    @Override
-    protected WebDriver getDriver() {
-        return driver;
+        super(driver);
     }
 
     RegStep1 scrollToForm() {

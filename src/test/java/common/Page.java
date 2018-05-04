@@ -1,33 +1,36 @@
-package beauty;
+package common;
 
-import gmail.LoginPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class Page {
 
-    protected abstract WebDriver getDriver();
+	protected WebDriver driver;
+
+    public Page(WebDriver driver) {
+        this.driver = driver;
+    }
 
     //scroll to specific element
     public void scrollToElement(By by){
-        WebElement el = getDriver().findElement(by);
-        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView();", el);
+        WebElement el = driver.findElement(by);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", el);
     }
 
     public void scrollToElementByPixel(int x, int y){
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,800)");
     }
 
     public WebElement writeInput(By by, String text) {
-        WebElement el = getDriver().findElement(by);
+        WebElement el = driver.findElement(by);
         el.sendKeys(text);
         return el;
     }
 
     public WebElement click(By by) {
-        WebElement el = getDriver().findElement(by);
+        WebElement el = driver.findElement(by);
         el.click();
         return el;
     }
@@ -43,7 +46,7 @@ public abstract class Page {
 
     public boolean isElementVisible(By by) {
 
-        return !getDriver().findElements(by).isEmpty();
+        return !driver.findElements(by).isEmpty();
     }
 
    //incognito mode

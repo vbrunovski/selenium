@@ -1,5 +1,6 @@
 package beauty;
 
+import common.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,19 +12,12 @@ import java.awt.event.KeyEvent;
 
 import static org.junit.Assert.fail;
 
-public class DashboardWorkingShedulePage extends Page{
-    private WebDriver driver;
-
+public class DashboardWorkingShedulePage extends Page {
     private final By sunday = By.xpath("/html/body/div[1]/app-root/app-provider-layout/div/div/app-schedules/div[2]/div/div/div/ng-fullcalendar/div[2]/div/table/tbody/tr/td/div/div/div[2]/table/tbody/tr[6]/td[2]");
 
-    @Override
-    protected WebDriver getDriver(){return driver;}
-
     public DashboardWorkingShedulePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
-
-
 
     public void myShedule(Weekday weekDay, String timeEnd){
         WebElement elem = driver.findElement(sunday);

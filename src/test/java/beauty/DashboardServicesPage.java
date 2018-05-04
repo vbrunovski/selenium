@@ -1,11 +1,10 @@
 package beauty;
 
+import common.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class DashboardServicesPage extends Page {
-    private WebDriver driver;
-
     private final By skipBtn = By.xpath("/html/body/div/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/app-service-manager/div/a");
     private final By hairServiceCheckbox = By.xpath("//ul/li[.='Hair service']/span[@class='icon check-icon glyphicon glyphicon-unchecked']");
     private final By deleteIcon = By.xpath("/html/body/div/app-root/app-provider-layout/div/div/app-services/div[2]/div[1]/div/div/div[2]/div/div[2]/app-service-manager/table/tbody/tr[2]/td[4]/i");
@@ -20,13 +19,9 @@ public class DashboardServicesPage extends Page {
     private final By scrollToEl = By.xpath("/html/body/div/app-root/app-provider-layout/div/div/app-services/div[2]/div[2]/div");
     private final By clickWorkingSheduleLink = By.xpath("/html/body/div[1]/app-root/app-provider-layout/div/app-left-nav/div/div/ul[2]/li[3]/a");
 
-    @Override
-    protected WebDriver getDriver() {
-        return driver;
-    }
 
     public DashboardServicesPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     DashboardServicesPage services(){
