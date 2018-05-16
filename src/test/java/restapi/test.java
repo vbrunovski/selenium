@@ -1,6 +1,8 @@
 package restapi;
 
 import beauty.LoginPage;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import common.GenericTest;
 import okhttp3.*;
@@ -10,14 +12,13 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 public class test implements GenericTest {
     private static WebDriver driver;
@@ -43,26 +44,74 @@ public class test implements GenericTest {
 		URL = "https://" + login + ":" + password  +"@bo.digital-magic.io";
     }
 
+	static class SearchRecord2{
+    	public String name;
+    	public String cityId;
+    	public String userId;
+	}
+
 
     static class SearchRecord {
     	public String id;
     	public String name;
 	}
 
+	static class SearchRecordEx{
+		public String id;
+		public String name;
+		public Double price;
+		public Integer duration;
+	}
+
     static class SearchResult {
-    	public List<SearchRecord> cities;
-    	public List<SearchRecord> districts;
-    	public List<SearchRecord> categories;
-    	public List<SearchRecord> services;
-    	public List<SearchRecord> resources;
+		public List<SearchRecord> cities;
+		public List<SearchRecord> districts;
+		public List<SearchRecord> categories;
+		public List<SearchRecord> services;
+		public List<SearchRecord> resources;
+	}
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+	static class SearchResultEx{
+		public String id;
+		public String name;
+		public String userId;
+		public String city;
+		public String district;
+		public String host;
+		public List<SearchRecord> categories;
+		public List<SearchRecordEx> services;
+		//public List<Object> availability;
+	}
+
+	List<SearchResultEx> search(String query){
+    	String url = baseUrl + "/api/search/domain/" + query + "?availability=true";
+		Request request = new Request.Builder()
+			.get()
+			.url(url)
+			.build();
+
+		try (Response response = client.newCall(request).execute()) {
+			if (response.code() != 200) {
+				throw new IllegalArgumentException("Unexpected response status:" + response.code() + "; " + response.body().string());
+			}
+			String body = response.body().string();
+			System.out.println(body);
+			return objectMapper.readValue(body, new TypeReference<List<SearchResultEx>>() {});
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+
 	}
 
 	SearchResult searchSuggestion(String query) {
 		String url = baseUrl + "/api/search/suggestions/" + query;
 		Request request = new Request.Builder()
-				.get()
-				.url(url)
-				.build();
+			.get()
+			.url(url)
+			.build();
 
 		try (Response response = client.newCall(request).execute()) {
 			if (response.code() != 200) {
@@ -79,7 +128,7 @@ public class test implements GenericTest {
 	}
 
     @Test
-    public void search() throws IOException {
+    public void testSearchSuggestions() throws IOException {
 		SearchResult result = searchSuggestion("barber");
 		assertEquals(1, result.categories.size());
 		assertEquals("Barber", result.categories.get(0).name);
@@ -88,6 +137,18 @@ public class test implements GenericTest {
 		assertEquals(5, result.categories.size());
 		assertEquals(32, result.services.size());
     	assertEquals("Hair care", result.categories.get(0).name);
+
+	}
+
+	@Test
+	public void testSearch(){
+		//SearchResult result
+		List<SearchResultEx> results = search("barber");
+        assertNotEquals(0, results.size());
+        SearchResultEx result = results.get(0);
+        result.categories.size();
+        assertTrue(result.categories.stream().anyMatch(c -> c.id.equals("dd") && c.name.equals("ddd")));
+		results = search("hair");
 
 	}
 

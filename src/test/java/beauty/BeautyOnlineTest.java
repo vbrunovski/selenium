@@ -59,7 +59,7 @@ public class BeautyOnlineTest implements GenericTest {
 				.services()
 				.fillPriceAndDuration("10", "11.50")
 				.clickSave()
-				.clickWorkingShedule().myShedule(Monday, "07:00");
+				.clickWorkingShedule().openingHours("00:00", "06:00");
     }
 
     @Test
