@@ -7,6 +7,9 @@ import org.openqa.selenium.WebDriver;
 public class ProviderPage extends Page {
     private final static By toScroll1 = By.xpath("/html/body/div/app-root/app-site-layout/div/app-provider-page/div/div[2]/div[1]/div[4]/div/div/table/tbody/tr[1]");
     private final static By bookServicebtn = By.xpath("/html/body/div/app-root/app-site-layout/div/app-provider-page/div/div[2]/div[1]/div[4]/div/div/table/tbody/tr[2]/td[4]/a");
+    private final static By sendMessageBtn = By.xpath("/html/body/div/app-root/app-site-layout/div/app-provider-page/div/div[2]/div[2]/div[1]/a");
+    private final static By whatWeAreSenging = By.xpath("/html/body/div/app-root/app-site-layout/div/app-provider-page/div/div[2]/ngx-smart-modal[1]/div/div/div/form/textarea");
+    private final static By sendBtn = By.xpath("/html/body/div/app-root/app-site-layout/div/app-provider-page/div/div[2]/ngx-smart-modal[1]/div/div/div/form/button");
 
     public ProviderPage(WebDriver driver) {
         super(driver);
@@ -17,5 +20,13 @@ public class ProviderPage extends Page {
         click(bookServicebtn);
         sleep(1);
         return new TimeBookingPage(driver);
+    }
+
+    public void clickSendMessage(String message){
+        sleep(1);
+        click(sendMessageBtn);
+        sleep(1);
+        writeInput(whatWeAreSenging ,message);
+        click(sendBtn);
     }
 }

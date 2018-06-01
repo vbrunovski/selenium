@@ -96,4 +96,18 @@ public class BeautyOnlineTest implements GenericTest {
             .fillRegistration("", "", "", "", "", "", 0,"", "", "")
             .clickSkip();
     }
+
+    @Test
+    public void checkPrivateMessage(){
+        DashboardIndexPage dip = new DashboardIndexPage(driver);
+        SearchPage sp = new SearchPage(driver);
+        driver.get(URL);
+        driver.manage().window().maximize();
+        new LoginPage(driver).loginGmail(username2, password2);
+        dip.clickHome();
+        sp.searchOnMainPage("toning").
+            clickOnSearchResult().
+            clickSendMessage("Hello, my name is Vitali");
+
+    }
 }

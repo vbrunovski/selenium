@@ -24,10 +24,10 @@ public interface GenericTest {
 
     static WebDriver getDriver() {
     	Properties props = getProperties();
-		System.setProperty("webdriver.chrome.driver", props.getProperty("chromedriver.path"));
-		System.setProperty("webdriver.gecko.driver", props.getProperty("geckodriver.path"));
-		//return new ChromeDriver();
-		return new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver", props.getProperty("chromedriver.path"));
+        System.setProperty("webdriver.gecko.driver", props.getProperty("geckodriver.path"));
+        //return new ChromeDriver();
+        return new FirefoxDriver();
 	}
 
 }
