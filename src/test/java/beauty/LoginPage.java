@@ -62,7 +62,8 @@ public class LoginPage extends Page {
 		WebElement logoutEL = driver.findElement(By.xpath("//*[@id=\"gb_71\"]"));
 		logoutEL.click();
 		sleep(2);
-		WebElement el3 = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div/div[2]"));
+		WebElement el3 = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[1]/content/div/div/div[2]/div"));
+
 		el3.click();
 		sleep(2);
 		WebElement el4 = driver.findElement(By.xpath("//*[@id=\"identifierLink\"]"));

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 
+import java.security.Provider;
 import java.util.Properties;
 
 import static beauty.Weekday.*;
@@ -98,7 +99,7 @@ public class BeautyOnlineTest implements GenericTest {
     }
 
     @Test
-    public void checkPrivateMessage(){
+    public void checkPrivateMessage() throws InterruptedException {
         DashboardIndexPage dip = new DashboardIndexPage(driver);
         SearchPage sp = new SearchPage(driver);
         driver.get(URL);
@@ -109,5 +110,40 @@ public class BeautyOnlineTest implements GenericTest {
             clickOnSearchResult().
             clickSendMessage("Hello, my name is Vitali");
 
+        TimeBookingPage tbp = new TimeBookingPage(driver);
+        tbp.logout();
+
+        driver.get("https://gmail.com");
+        Thread.sleep(4000);
+        new LoginPage(driver).logoutGmail();
+
+        driver.get("https://bo.digital-magic.io/logon/sign-in/user");
+        new LoginPage(driver).loginGmail(username, password);
+
+
+        dip.clickMessages();
+        dip.findMessage("Hello, my name is Vitali");
+
+    }
+
+    @Test
+    public void checkFormValidation(){
+        driver.get(URL);
+        driver.manage().window().maximize();
+        new LoginPage(driver).loginGmail(username2, password2);
+
+        ProviderPage pp = new ProviderPage(driver);
+        pp.goToDashBoard();
+
+        DashboardIndexPage dip = new DashboardIndexPage(driver);
+        dip.clickMyProfile();
+
+        DashboardMyProfilePage dmpp = new DashboardMyProfilePage(driver);
+
+        for (UserProfile profile : dmpp.testData()) {
+            dmpp.clearProfile();
+            dmpp.submitForm(profile);
+
+        }
     }
 }
