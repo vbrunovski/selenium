@@ -2,6 +2,7 @@ package common;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class Page {
@@ -25,7 +26,25 @@ public abstract class Page {
 
     public WebElement writeInput(By by, String text) {
         WebElement el = driver.findElement(by);
-        el.sendKeys(text);
+        if (!text.isEmpty()) {
+            el.sendKeys(text);
+        }
+        return el;
+    }
+
+    public WebElement clearInput(By by) {
+        WebElement el = driver.findElement(by);
+        el.clear();
+        el.sendKeys("-");
+        el.sendKeys(Keys.BACK_SPACE);
+
+        return el;
+    }
+
+    public WebElement selectFirstElement(By by){
+        WebElement el = driver.findElement(by);
+        Select select = new Select(el);
+        select.selectByIndex(0);
         return el;
     }
 

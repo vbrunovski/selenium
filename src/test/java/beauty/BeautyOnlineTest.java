@@ -146,4 +146,18 @@ public class BeautyOnlineTest implements GenericTest {
 
         }
     }
+
+    @Test
+    public void checkWorkingShedule(){
+        driver.get(URL);
+        driver.manage().window().maximize();
+        new LoginPage(driver).loginGmail(username, password);
+
+        ProviderPage pp = new ProviderPage(driver);
+        //pp.goToDashBoard();
+
+        DashboardWorkingShedulePage shedulePage = new DashboardWorkingShedulePage(driver);
+        shedulePage.clickWorkingShedule();
+        shedulePage.openingHoursclickAdd("00:00", "08:00");
+    }
 }

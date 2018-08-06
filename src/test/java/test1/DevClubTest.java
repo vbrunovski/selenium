@@ -47,8 +47,6 @@ public class DevClubTest {
 		driver.get("http://petromaks.ee");
 		List<WebElement> elements = driver.findElements(By.className("alignnone"));
 		System.out.print(elements);
-
-
 	}
 
 

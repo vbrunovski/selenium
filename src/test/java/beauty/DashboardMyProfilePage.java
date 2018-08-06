@@ -34,26 +34,29 @@ public class DashboardMyProfilePage extends Page {
         super(driver);
     }
 
+
+
     public void clearProfile(){
-        WebElement fnameEl = driver.findElement(firstname);
-        fnameEl.clear();
-        WebElement lnameEl = driver.findElement(lastname);
-        lnameEl.clear();
-        WebElement emailEl = driver.findElement(email);
-        emailEl.clear();
-        WebElement phoneNumberEl = driver.findElement(phoneNumber);
-        phoneNumberEl.clear();
-        WebElement addressEl = driver.findElement(address);
-        addressEl.clear();
-        WebElement zipCodeEl = driver.findElement(zipCode);
-        zipCodeEl.clear();
+        clearInput(firstname);
+        clearInput(lastname);
+        clearInput(email);
+        clearInput(phoneNumber);
+        clearInput(address);
+        clearInput(zipCode);
+
     }
 
     public static Collection<UserProfile> testData() {
         return Arrays.asList(
-            new UserProfile("Vitali", "", "brunovski.90@gmail.com", "58104459", "Estonia", "Tallinn", "Kesklinn", "Address 12-2", "12345", "Eesti"),
-            new UserProfile("Andrei", "Petrov", "petrov91@gmail.com", "51001111", "Estonia", "Tallinn", "Kesklinn", "Address 44-2", "11111", "English"),
-            new UserProfile("Semen", "Plahov", "plahov.88@gmail.com", "513319991", "Estonia", "Tallinn", "Pirita", "Address 11-12", "44411", "Eesti")
+            new UserProfile("", "Brunovski", "brunovski.90@gmail.com", "58104459", "Estonia", "Tallinn", "Kesklinn", "Address 12-2", "12345", "Eesti"),
+            new UserProfile("Andrei", "", "", "51001111", "Estonia", "Tallinn", "Kesklinn", "Address 44-2", "11111", "English"),
+            new UserProfile("Semen", "Plahov", "", "8887788", "Estonia", "Tallinn", "Pirita", "Address 11-12", "44411", "Eesti"),
+            new UserProfile("Semen", "Plahov", "asd@asd.com", "", "Estonia", "Tallinn", "Pirita", "Address 11-12", "44411", "Eesti"),
+            new UserProfile("Semen", "Plahov", "asd@asd.com", "8887788", "", "Tallinn", "Pirita", "Address 11-12", "44411", "Eesti"),
+            new UserProfile("Semen", "Plahov", "asd@asd.com", "8887788", "Estonia", "", "Pirita", "Address 11-12", "44411", "Eesti"),
+            new UserProfile("Semen", "Plahov", "asd@asd.com", "8887788", "Estonia", "Tallinn", "", "Address 11-12", "44411", "Eesti"),
+            new UserProfile("Semen", "Plahov", "asd@asd.com", "8887788", "Estonia", "Tallinn", "Pirita", "", "44411", "Eesti"),
+            new UserProfile("Semen", "Plahov", "asd@asd.com", "8887788", "Estonia", "Tallinn", "Pirita", "Address 11-12", "", "Eesti")
         );
     }
 
@@ -72,6 +75,7 @@ public class DashboardMyProfilePage extends Page {
 
         WebElement phoneEl = driver.findElement(phoneNumber);
         //phoneEl.sendKeys(userProfile.phoneNumber);
+        writeInput(phoneNumber, userProfile.phoneNumber);
 
         WebElement addressEl = driver.findElement(address);
         //addressEl.sendKeys(userProfile.address);
@@ -84,7 +88,13 @@ public class DashboardMyProfilePage extends Page {
         WebElement countryEl = driver.findElement(country);
         countryEl.sendKeys(userProfile.country);
         Select countrySelect = new Select(countryEl);
-        countrySelect.selectByVisibleText(userProfile.country);
+
+        if(userProfile.country.isEmpty()){
+            selectFirstElement(country);
+        }
+        else {
+            countrySelect.selectByVisibleText(userProfile.country);
+        }
         sleep(2);
 
         Select countrySelect2 = new Select(countryEl);
@@ -97,7 +107,12 @@ public class DashboardMyProfilePage extends Page {
         WebElement cityEl = driver.findElement(city);
         cityEl.sendKeys(userProfile.city);
         Select citySelect = new Select(cityEl);
-        citySelect.selectByVisibleText(userProfile.city);
+        if(userProfile.city.isEmpty()){
+            selectFirstElement(city);
+        }
+        else {
+            citySelect.selectByVisibleText(userProfile.city);
+        }
         sleep(2);
 
         Select citySelect2 = new Select(cityEl);
@@ -109,7 +124,12 @@ public class DashboardMyProfilePage extends Page {
 
         WebElement distEl = driver.findElement(district);
         Select distSelect = new Select(distEl);
-        distSelect.selectByVisibleText(userProfile.district);
+        if(userProfile.district.isEmpty()){
+            selectFirstElement(city);
+        }
+        else {
+            distSelect.selectByVisibleText(userProfile.district);
+        }
 
         WebElement langElement = driver.findElement(lang);
         Select langSelect = new Select(langElement);
@@ -118,39 +138,26 @@ public class DashboardMyProfilePage extends Page {
         langSelect.deselectAll();
         langSelect.selectByVisibleText(userProfile.lang);
 
-        click(saveBtn);
-        sleep(2);
+        //click(saveBtn);
+        //sleep(2);
 
-
-        /*
-        if(userProfile.lastname.isEmpty()){
-            assertTrue(driver.getPageSource().contains("A name is required!"));
-        }
-        else{
-            assertFalse(driver.getPageSource().contains("A name is required!"));
-        }
-        */
-
-        getPageSource(userProfile.lastname, "A name is required");
+        validateField(userProfile.firstname, "A name is required!", firstname);
+        validateField(userProfile.lastname, "A name is required!", lastname);
+        validateField(userProfile.email, "Invalid email!", email);
+        validateField(userProfile.phoneNumber, "Invalid phone!", phoneNumber);
+        validateField(userProfile.zip, "Invalid zip code!", zipCode);
 
     }
 
-    public void getPageSource(UserProfile userProfile, String text){
+    private void validateField(String value, String errorText, By by) {
+        if (value.isEmpty()){
+            assertTrue(checkTextFound(by, errorText));
+        }  else{
+            assertFalse(checkTextFound(by, errorText));
+        }
+    }
 
-        //firstname
-        if(userProfile.firstname.isEmpty()){
-            assertTrue(driver.getPageSource().contains(text));
-        }
-        else{
-            assertFalse(driver.getPageSource().contains(text));
-        }
-
-        //lastname
-        if(userProfile.lastname.isEmpty()){
-            assertTrue(driver.getPageSource().contains(text));
-        }
-        else{
-            assertFalse(driver.getPageSource().contains(text));
-        }
+    private boolean checkTextFound(By by, String text) {
+        return driver.findElement(by).findElement(By.xpath("..")).getText().contains(text);
     }
 }
