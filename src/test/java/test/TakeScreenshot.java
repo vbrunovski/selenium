@@ -17,7 +17,7 @@ public class TakeScreenshot {
 
     @BeforeClass
     public static void SetUp() throws MalformedURLException {
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\vitali.brunovski\\downloads\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\V\\Downloads\\chromedriver_win32\\chromedriver.exe");
         System.setProperty("webdriver.gecko.driver","C:\\Users\\vitali.brunovski\\downloads\\geckodriver-v0.20.0-win64\\geckodriver.exe");
         driver = new ChromeDriver();
     }
