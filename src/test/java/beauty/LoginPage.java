@@ -11,7 +11,8 @@ public class LoginPage extends Page {
 	private final By btnGoogle = By.cssSelector(".btn-google");
 	private final By googleUsername = By.cssSelector("input#identifierId");
 	private final By signInRegisterBtn = By.xpath("//*[@id=\"bs-example-navbar-collapse-1\"]/ul[2]/li[1]/a");
-	private final By clickNextBtn = By.xpath("//content/span[contains(text(),'Next')]");
+	private final By clickNextBtn = By.xpath("//content/span[contains(text(),'Далее')]");
+	//private final By clickNextBtn = By.xpath("/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div[2]/div[1]/div/content/span");
 	private final By googlePassword = By.cssSelector("input[name='password']");
 	private final By clickNextBtn2 = By.xpath("//div[@id='passwordNext']");
 

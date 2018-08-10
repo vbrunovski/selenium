@@ -127,6 +127,31 @@ public class BeautyOnlineTest implements GenericTest {
     }
 
     @Test
+    public void checkOpeningHours(){
+        DashboardIndexPage dip = new DashboardIndexPage(driver);
+        DashboardMyProfilePage dmp = new DashboardMyProfilePage(driver);
+        SearchPage sp = new SearchPage(driver);
+        driver.get(URL);
+        driver.manage().window().maximize();
+        new LoginPage(driver).loginGmail(username2, password2);
+        dmp.clickDashBoard();
+        DashboardWorkingShedulePage dwsp = new DashboardWorkingShedulePage(driver);
+        dwsp.clickWorkingShedule();
+        dwsp.openingHours( "11:00", "13:00");
+        dwsp.clickAddSheduleButton();
+        dwsp.clickIndexPage();
+
+        sp.searchOnMainPage("asdasd");
+        SearchResultPage srp = new SearchResultPage(driver);
+        srp.clickOnSearchResult();
+
+        ProviderPage pp = new ProviderPage(driver);
+        pp.checkDay();
+
+
+    }
+
+    @Test
     public void checkFormValidation(){
         driver.get(URL);
         driver.manage().window().maximize();
