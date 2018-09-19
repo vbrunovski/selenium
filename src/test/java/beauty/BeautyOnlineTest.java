@@ -185,4 +185,19 @@ public class BeautyOnlineTest implements GenericTest {
         shedulePage.clickWorkingShedule();
         shedulePage.openingHoursclickAdd("00:00", "08:00");
     }
+
+
+    @Test
+    public void addTest(){
+        DashboardIndexPage dip = new DashboardIndexPage(driver);
+        DashboardMyProfilePage dmp = new DashboardMyProfilePage(driver);
+        DashboardAddBookingPage dabp = new DashboardAddBookingPage(driver);
+        SearchPage sp = new SearchPage(driver);
+        driver.get(URL);
+        driver.manage().window().maximize();
+        new LoginPage(driver).loginGmail(username2, password2);
+        dmp.clickDashBoard();
+        dip.clickAddBooking();
+        dabp.bookingDetails();
+    }
 }
