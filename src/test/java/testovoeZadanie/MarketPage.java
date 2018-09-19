@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MarketPage extends Functions {
 
     @Override
@@ -13,7 +16,7 @@ public class MarketPage extends Functions {
     }
 
     private final WebDriver driver;
-    private final By mobileSection = By.xpath("/html/body/div[1]/div[2]/noindex/ul/li[1]/div/div/a[1]");
+    private final By mobileSection = By.xpath("/html/body/div[1]/div/div[2]/noindex/ul/li[1]/div/div/a[1]");
     private final By priceEnd = By.xpath("//*[@id=\"glpriceto\"]");
     private final By scrollToEl1 = By.xpath("//*[@id=\"search-prepack\"]/div/div/div[2]/div/div[1]/div[10]/fieldset/legend");
     private final By screenSize = By.xpath("//*[@id=\"search-prepack\"]/div/div/div[2]/div/div[1]/div[10]/fieldset/ul/li[5]/div/label/div");
@@ -60,5 +63,14 @@ public class MarketPage extends Functions {
         WebElement el = driver.findElement(elementCountText);
         String text = el.getText();
         System.out.println(text);
+    }
+
+    public void checkElementsCount(){
+        List<WebElement> count = driver.findElements(By.className("n-snippet-cell2_type_product"));
+        count.size();
+        System.out.println(count.size());
+        if(count.size()>10){
+            System.out.println("Количество элементов больше 10");
+        }
     }
 }

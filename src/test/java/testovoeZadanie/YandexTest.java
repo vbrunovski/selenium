@@ -2,6 +2,7 @@ package testovoeZadanie;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -13,7 +14,7 @@ public class YandexTest {
 
     @BeforeClass
     public static void SetUp(){
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\vitali.brunovski\\downloads\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
     }
 
@@ -40,6 +41,10 @@ public class YandexTest {
         yp.clickToMarket();
         mp.clickToMobileSection();
         mp.clickToPriceRange();
-        mp.checkElementCount();
+        //mp.checkElementCount();
+        Thread.sleep(2000);
+        mp.checkElementsCount();
     }
+
+
 }
