@@ -155,6 +155,17 @@ public class BeautyOnlineTest implements GenericTest {
     }
 
     @Test
+    public void addBooking(){
+        DashboardIndexPage dip = new DashboardIndexPage(driver);
+        DashboardMyProfilePage dmp = new DashboardMyProfilePage(driver);
+        SearchPage sp = new SearchPage(driver);
+        driver.get(URL);
+        driver.manage().window().maximize();
+        new LoginPage(driver).loginGmail(username2, password2);
+        dmp.clickDashBoard();
+    }
+
+    @Test
     public void checkFormValidation(){
         driver.get(URL);
         driver.manage().window().maximize();
