@@ -19,14 +19,16 @@ public class RegStep1 extends Page {
     private final By districtForm = By.xpath("//div/form/div/div/div/select[@formcontrolname=\"districtId\"]");
     private final By addressForm = By.xpath("//div/form/div/div/div/input[@formcontrolname=\"address\"]");
     private final By zipForm = By.xpath("//div/form/div/div/div/input[@formcontrolname=\"zipcode\"]");
-    private final By languageForm = By.xpath("//div/form/div/div/div/select[@formcontrolname=\"languages\"]");
+    private final By languageForm = By.xpath("/html/body/div[1]/app-root/app-provider-layout/div/div/app-profile/div[2]/div[1]/div/div/div[2]/div/app-user-profile/div/form/div/div[6]/div[2]/mat-select/div");
     private final By skipBtn = By.xpath("//div/form/div/div/a[@class='button preview pull-right']");
+    private final By myProfile = By.xpath("/html/body/div/app-root/app-provider-layout/div/app-left-nav/div/div/ul[3]/li[1]/a");
 
     public RegStep1(WebDriver driver) {
         super(driver);
     }
 
     RegStep1 scrollToForm() {
+        click(myProfile);
         scrollToElement(By.xpath("//div/form/div/div/div/input"));
         sleep(2);
         return this;
@@ -72,11 +74,10 @@ public class RegStep1 extends Page {
         WebElement langElement = driver.findElement(languageForm);
         Select langSelect = new Select(langElement);
         //get all list
-        langSelect.getOptions(); // not working
+        //langSelect.getOptions(); // not working
         for (String lang: languages) {
             langSelect.selectByVisibleText(lang);
         }
         return this;
-
     }
 }

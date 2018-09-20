@@ -27,7 +27,7 @@ public class DashboardMyProfilePage extends Page {
     private final static By country = By.xpath("//*[@id=\"countryDropDown\"]");
     private final static By city = By.xpath("/html/body/div/app-root/app-provider-layout/div/div/app-profile/div[2]/div[1]/div/div/div[2]/div/app-user-profile/div/form/div/div[4]/div[2]/select");
     private final static By district = By.xpath("/html/body/div/app-root/app-provider-layout/div/div/app-profile/div[2]/div[1]/div/div/div[2]/div/app-user-profile/div/form/div/div[5]/div[1]/select");
-    private final static By lang = By.xpath("/html/body/div/app-root/app-provider-layout/div/div/app-profile/div[2]/div[1]/div/div/div[2]/div/app-user-profile/div/form/div/div[6]/div[2]/select");
+    private final static By lang = By.xpath("//*[@id=\"mat-select-1\"]");
     private final static By saveBtn = By.xpath("//*[@id=\"next1\"]");
     private final static By userNameBtn = By.xpath("/html/body/div/app-root/app-site-layout/app-site-header/header/div/div/nav/div/div[2]/ul[2]/li[1]/a");
     private final static By dashboardBtn = By.xpath("/html/body/div/app-root/app-site-layout/app-site-header/header/div/div/nav/div/div[2]/ul[2]/li[1]/ul/li[3]/a");
@@ -135,11 +135,14 @@ public class DashboardMyProfilePage extends Page {
         }
 
         WebElement langElement = driver.findElement(lang);
-        Select langSelect = new Select(langElement);
+        langElement.click();
+        WebElement elementEnglish = driver.findElement(By.xpath("//*[@id=\"mat-option-3\"]"));
+        elementEnglish.click();
+        //Select langSelect = new Select(langElement);
         //get all list
         //langSelect.getOptions();
-        langSelect.deselectAll();
-        langSelect.selectByVisibleText(userProfile.lang);
+        //langSelect.deselectAll();
+        //langSelect.selectByVisibleText(userProfile.lang);
 
         //click(saveBtn);
         //sleep(2);

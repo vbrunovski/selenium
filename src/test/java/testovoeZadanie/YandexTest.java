@@ -44,6 +44,9 @@ public class YandexTest {
         //mp.checkElementCount();
         Thread.sleep(2000);
         mp.checkElementsCount();
+        mp.saveFirstElementProduct();
+        mp.changeSort();
+        mp.clickOnFirstElementProduct();
     }
 
 

@@ -2,8 +2,10 @@ package beauty;
 
 import common.Page;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import static org.junit.Assert.*;
 
@@ -16,7 +18,9 @@ public class DashboardAddBookingPage extends Page {
     }
 
     public void bookingDetails(){
-        click(dateInput);
-        writeInput(dateInput, "01.10.2018");
+
+
+        writeInput(dateInput, "12");
+        //click(dateInput);
     }
 }

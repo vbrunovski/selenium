@@ -9,8 +9,8 @@ import static org.junit.Assert.assertEquals;
 
 public class ProviderPage extends Page {
     private final static By toScroll1 = By.xpath("/html/body/div/app-root/app-site-layout/div/app-provider-page/div/div[2]/div[1]/div[4]/div/div/table/tbody/tr[1]");
-    private final static By bookServicebtn = By.xpath("/html/body/div/app-root/app-site-layout/div/app-provider-page/div/div[2]/div[1]/div[4]/div/div/table/tbody/tr[2]/td[4]/a");
-    private final static By sendMessageBtn = By.xpath("/html/body/div/app-root/app-site-layout/div/app-provider-page/div/div[2]/div[2]/div[1]/a");
+    private final static By bookServicebtn = By.xpath("/html/body/div/app-root/app-site-layout/div/app-provider-page/div/div[2]/div[1]/div[4]/div/div/table/tbody/tr[2]/td[4]/div/a/span");
+    private final static By sendMessageBtn = By.xpath("/html/body/div/app-root/app-site-layout/div/app-provider-page/div/div[2]/div[1]/div[2]/button");
     private final static By whatWeAreSenging = By.xpath("/html/body/div/app-root/app-site-layout/div/app-provider-page/div/div[2]/ngx-smart-modal[1]/div/div/div/form/textarea");
     private final static By sendBtn = By.xpath("/html/body/div/app-root/app-site-layout/div/app-provider-page/div/div[2]/ngx-smart-modal[1]/div/div/div/form/button");
     private final static By dDown = By.xpath("/html/body/div/app-root/app-site-layout/app-site-header/header/div/div/nav/div/div[2]/ul[2]/li[1]/a");

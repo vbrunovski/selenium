@@ -88,16 +88,18 @@ public class BeautyOnlineTest implements GenericTest {
     }
 
 
+
     @Test
     public void checkBadRegistration() {
         driver.get(URL);
         driver.manage().window().maximize();
-		new LoginPage(driver).loginGmail(username, password)
-            .scrollToForm()
-            .fillRegistration("", "", "", "", "", "", 0,"", "", "")
-            .clickSkip();
+        new LoginPage(driver).loginGmail(username, password)
+                .scrollToForm()
+                .fillRegistration("", "", "", "", "", "", 0,"", "", "")
+                .clickSkip();
     }
 
+    //TEST IS WORKING
     @Test
     public void checkPrivateMessage() throws InterruptedException {
         DashboardIndexPage dip = new DashboardIndexPage(driver);
@@ -120,12 +122,13 @@ public class BeautyOnlineTest implements GenericTest {
         driver.get("https://bo.digital-magic.io/logon/sign-in/user");
         new LoginPage(driver).loginGmail(username, password);
 
-
         dip.clickMessages();
         dip.findMessage("Hello, my name is Vitali");
 
     }
 
+
+    //TEST WORKING EXCEPT LAST STEP
     @Test
     public void checkOpeningHours(){
         DashboardIndexPage dip = new DashboardIndexPage(driver);
@@ -172,6 +175,8 @@ public class BeautyOnlineTest implements GenericTest {
         }
     }
 
+
+    //TEST IS WORKING
     @Test
     public void checkWorkingShedule(){
         driver.get(URL);
@@ -188,7 +193,7 @@ public class BeautyOnlineTest implements GenericTest {
 
 
     @Test
-    public void addTest(){
+    public void addBookingDetails(){
         DashboardIndexPage dip = new DashboardIndexPage(driver);
         DashboardMyProfilePage dmp = new DashboardMyProfilePage(driver);
         DashboardAddBookingPage dabp = new DashboardAddBookingPage(driver);

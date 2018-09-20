@@ -1,6 +1,7 @@
 package testovoeZadanie;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -28,6 +29,7 @@ public class MarketPage extends Functions {
     private final By lgDevice = By.xpath("//*[@id=\"search-prepack\"]/div/div/div[2]/div/div[1]/div[4]/fieldset/ul/li[5]/div/a/label/div");
     private final By scrollToDown = By.xpath("/html/body/div[1]/div[4]/div[2]/div[1]/div[2]/div/div[2]/div[1]/a");
     private final By elementCountText = By.xpath("/html/body/div[1]/div[4]/div[2]/div[1]/div[2]/div/div[3]/span/button/span");
+    private final By sortByNew = By.xpath("/html/body/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]/div[7]/a");
 
 
     public MarketPage(WebDriver driver){
@@ -72,5 +74,24 @@ public class MarketPage extends Functions {
         if(count.size()>10){
             System.out.println("Количество элементов больше 10");
         }
+    }
+
+    public void saveFirstElementProduct(){
+        //WebElement firstElement = driver.findElement(By.xpath("//*[@data-id='model-43052347']"));
+        WebElement firstElement = driver.findElement(By.linkText("Смартфон Honor 10 4/64GB"));
+        System.out.println(firstElement);
+    }
+
+    public void changeSort(){
+        driver.findElement(sortByNew).click();
+    }
+
+    public void clickOnFirstElementProduct() throws InterruptedException {
+        WebElement elementToScroll = driver.findElement(By.xpath("/html/body/div[1]/div[4]/div[2]/div[1]/div[2]/div/div[1]/div[9]"));
+        Thread.sleep(2000);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", elementToScroll);
+        Thread.sleep(2000);
+        driver.findElement(By.linkText("Смартфон Honor 10 4/64GB")).click();
+        //driver.findElement(By.xpath("//*[@data-id='model-43052347']")).click();
     }
 }

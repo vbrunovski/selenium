@@ -43,7 +43,7 @@ public class LoginPage extends Page {
 			return new RegStep1(driver);
 		}
 		else{
-			WebElement useAnotherAccountBtn = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div/div[2]/form/div[2]/div/div/div/ul/li[2]"));
+			WebElement useAnotherAccountBtn = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div/div/form/content/section/div/content/div/div/ul/li[2]"));
 			useAnotherAccountBtn.click();
 			sleep(2);
 			writeInput(googleUsername, username);
@@ -58,17 +58,17 @@ public class LoginPage extends Page {
 	}
 
 	public void logoutGmail(){
-		WebElement elEl = driver.findElement(By.xpath("//div/div/div/div/div/a/span[@class='gb_db gbii']"));
+		WebElement elEl = driver.findElement(By.xpath("/html/body/div[7]/div[3]/div/div[1]/div[4]/header/div[2]/div[3]/div/div[2]/div/a"));
 		elEl.click();
 		WebElement logoutEL = driver.findElement(By.xpath("//*[@id=\"gb_71\"]"));
 		logoutEL.click();
 		sleep(2);
-		WebElement el3 = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[1]/content/div/div/div[2]/div"));
 
-		el3.click();
-		sleep(2);
-		WebElement el4 = driver.findElement(By.xpath("//*[@id=\"identifierLink\"]"));
-		el4.click();
+		//WebElement el3 = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div[2]/div/div/div[1]/content/div/div/div[2]/div"));
+		//el3.click();
+		//sleep(2);
+		//WebElement el4 = driver.findElement(By.xpath("//*[@id=\"identifierLink\"]"));
+		//el4.click();
 	}
 
 

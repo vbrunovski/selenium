@@ -21,7 +21,7 @@ public class DashboardWorkingShedulePage extends Page {
     private final By addSheduleSunday = By.xpath("/html/body/div/app-root/app-provider-layout/div/div/app-schedules/div[2]/app-schedule-manager/div[2]/div/div[1]/div[7]/div[4]/a");
     private final By addSheduleSuturday = By.xpath("/html/body/div[1]/app-root/app-provider-layout/div/div/app-schedules/div[2]/app-schedule-manager/div[2]/div/div[1]/div[6]/div[4]/a");
     private final By addSheduleFriday = By.xpath("/html/body/div[1]/app-root/app-provider-layout/div/div/app-schedules/div[2]/app-schedule-manager/div[2]/div/div[1]/div[5]/div[4]/a");
-    private final By clickIndexBtn = By.xpath("/html/body/div/app-root/app-provider-layout/app-provider-header/header/div/div/div[1]/div[1]/a[2]");
+    private final By clickHomeBtn = By.xpath("/html/body/div[1]/app-root/app-provider-layout/app-provider-header/header/div/div/div[1]/nav/ul/li/a");
 
     private final By clickWorkingShedule = By.xpath("/html/body/div/app-root/app-provider-layout/div/app-left-nav/div/div/ul[2]/li[4]/a");
 
@@ -62,7 +62,7 @@ public class DashboardWorkingShedulePage extends Page {
     }
 
     public void clickIndexPage(){
-        click(clickIndexBtn);
+        click(clickHomeBtn);
     }
 
     public void clickWorkingShedule(){
