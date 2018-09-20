@@ -37,8 +37,9 @@ public class BeautyOnlineTest implements GenericTest {
 
         new LoginPage(driver)
 			.loginGmail(username, password)
+            .becomeProvider()
             .scrollToForm()
-            .fillRegistration("Test", "Test", "web.xmm@gmail.com", "58104459", "Estonia", "Tallinn", 0, "Test Address", "12345", "English", "Eesti")
+            .fillRegistration("Test", "Test", "web.xmm@gmail.com", "58104459", "Estonia", "Tallinn", "Kesklinn", "Test Address", "12345", "English", "Eesti")
             .clickSkip()
             .selectFirst3servives()
             .scrollTop()
@@ -51,7 +52,7 @@ public class BeautyOnlineTest implements GenericTest {
     }
 
     @Test
-    public void checkDashboard(){
+    public void testServicesPage(){
         driver.get(URL);
         driver.manage().window().maximize();
 
@@ -95,7 +96,7 @@ public class BeautyOnlineTest implements GenericTest {
         driver.manage().window().maximize();
         new LoginPage(driver).loginGmail(username, password)
                 .scrollToForm()
-                .fillRegistration("", "", "", "", "", "", 0,"", "", "")
+                .fillRegistration("", "", "", "", "", "", "","", "", "")
                 .clickSkip();
     }
 
