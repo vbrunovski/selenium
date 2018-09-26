@@ -7,6 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
 import static org.junit.Assert.*;
 
 public class DashboardAddBookingPage extends Page {
@@ -19,8 +22,33 @@ public class DashboardAddBookingPage extends Page {
 
     public void bookingDetails(){
 
+        //writeInput(dateInput, "01.01.2018");
+        click(dateInput);
 
-        writeInput(dateInput, "12");
-        //click(dateInput);
+        try {
+            Robot robot = new Robot();
+            //paste
+            robot.keyPress(KeyEvent.VK_0);
+            robot.keyPress(KeyEvent.VK_1);
+            robot.keyPress(KeyEvent.VK_0);
+            robot.keyPress(KeyEvent.VK_2);
+            Thread.sleep(2000);
+            robot.keyPress(KeyEvent.VK_2);
+            Thread.sleep(1000);
+            robot.keyPress(KeyEvent.VK_0);
+            Thread.sleep(1000);
+            robot.keyPress(KeyEvent.VK_1);
+            Thread.sleep(1000);
+            robot.keyPress(KeyEvent.VK_8);
+            Thread.sleep(1000);
+
+
+        } catch (AWTException e) {
+            e.printStackTrace();
+            fail(e.getMessage());
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

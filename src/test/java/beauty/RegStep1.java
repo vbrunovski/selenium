@@ -6,6 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
+import static org.junit.Assert.fail;
+
 public class RegStep1 extends Page {
 
     //private final By becomeProviderBtn = By.xpath("//*[@id=\"bs-example-navbar-collapse-1\"]/ul[2]/li[2]/a");
@@ -19,27 +24,36 @@ public class RegStep1 extends Page {
     private final By districtForm = By.xpath("//div/form/div/div/div/select[@formcontrolname=\"districtId\"]");
     private final By addressForm = By.xpath("//div/form/div/div/div/input[@formcontrolname=\"address\"]");
     private final By zipForm = By.xpath("//div/form/div/div/div/input[@formcontrolname=\"zipcode\"]");
-    private final By languageForm = By.xpath("/html/body/div[1]/app-root/app-provider-layout/div/div/app-profile/div[2]/div[1]/div/div/div[2]/div/app-user-profile/div/form/div/div[6]/div[2]/mat-select/div");
-    private final By skipBtn = By.xpath("//div/form/div/div/a[@class='button preview pull-right']");
+    private final By languageForm = By.xpath("/html/body/div[1]/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[1]/div/div[2]/app-user-profile/div/form/div/div[6]/div[2]/mat-select/div/div[1]/span");
+    private final By saveBtn = By.cssSelector("#next1");
     private final By myProfile = By.xpath("/html/body/div/app-root/app-provider-layout/div/app-left-nav/div/div/ul[3]/li[1]/a");
+    private final By becomeProviderBtn = By.xpath("/html/body/div/app-root/app-site-layout/app-site-header/header/div/div/nav/div/div[2]/ul[2]/li[2]/a");
+    private final By clickToBg = By.xpath("/html/body/div[1]/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[1]/div/div[2]/app-user-profile/div/form/div/div[5]/div[2]/label");
+    private final By englishElement = By.xpath("/html/body/div[2]/div[2]/div/div/mat-option[1]/mat-pseudo-checkbox");
 
     public RegStep1(WebDriver driver) {
         super(driver);
     }
 
     RegStep1 scrollToForm() {
-        click(myProfile);
-        scrollToElement(By.xpath("//div/form/div/div/div/input"));
+        //click(myProfile);
+        scrollToElement(By.xpath("/html/body/div/app-root/app-site-layout/div/app-profile-steps/div[2]/div[2]/div[1]/div/div[2]/app-user-profile/div/form/div/div[1]/h3"));
+        sleep(2);
+        return this;
+    }
+
+    RegStep1 becomeProvider(){
+        //click(becomeProviderBtn);
         sleep(2);
         return this;
     }
 
     RegStep2 clickSkip() {
-        click(skipBtn);
+        click(saveBtn);
         return new RegStep2(driver);
     }
 
-    RegStep1 fillRegistration(String firstName, String lastName, String email, String phone, String country, String city, int districtIndex, String address, String zip, String ... languages) {
+    RegStep1 fillRegistration(String firstName, String lastName, String email, String phone, String country, String city, String district, String address, String zip, String ... languages) {
         driver.findElement(firstnameForm).sendKeys(firstName);
         driver.findElement(lastnameForm).sendKeys(lastName);
         WebElement emailElement = driver.findElement(emailForm);
@@ -52,32 +66,52 @@ public class RegStep1 extends Page {
         Select countrySelect = new Select(countryElement);
         countrySelect.selectByVisibleText(country);
         sleep(2);
-
-        Select countrySelect2 = new Select(countryElement);
-        countrySelect2.selectByIndex(0);
+        countrySelect.selectByIndex(0);
         sleep(2);
-
         countrySelect.selectByVisibleText(country);
         sleep(2);
 
         WebElement cityElement = driver.findElement(cityForm);
         Select citySelect = new Select(cityElement);
         citySelect.selectByVisibleText(city);
+        sleep(2);
+        citySelect.selectByIndex(0);
+        sleep(2);
+        citySelect.selectByVisibleText(city);
 
         WebElement distElement = driver.findElement(districtForm);
         Select distSelect = new Select(distElement);
-        distSelect.selectByIndex(districtIndex);
+        distSelect.selectByVisibleText(district);
 
         driver.findElement(addressForm).sendKeys(address);
         driver.findElement(zipForm).sendKeys(zip);
 
         WebElement langElement = driver.findElement(languageForm);
-        Select langSelect = new Select(langElement);
+        langElement.click();
+
+        WebElement englishLang = driver.findElement(englishElement);
+        englishLang.click();
+
+        try {
+            Robot robot = new Robot();
+
+            robot.keyPress(KeyEvent.VK_ESCAPE);
+
+        } catch (AWTException e) {
+            e.printStackTrace();
+            fail(e.getMessage());
+
+        }
+
+        //WebElement langElement = driver.findElement(languageForm);
+        //langElement.click();
+
+        //Select langSelect = new Select(langElement);
         //get all list
         //langSelect.getOptions(); // not working
-        for (String lang: languages) {
-            langSelect.selectByVisibleText(lang);
-        }
+        //for (String lang: languages) {
+           // langSelect.selectByVisibleText(lang);
+        //}
         return this;
     }
 }
