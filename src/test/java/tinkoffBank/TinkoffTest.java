@@ -2,6 +2,7 @@ package tinkoffBank;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.omg.PortableServer.THREAD_POLICY_ID;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -24,7 +25,7 @@ public class TinkoffTest {
 
     @Test
     public void test1() throws InterruptedException {
-        driver.get("http://google.com");
+        driver.get("http://tinkoff.ru");
         driver.manage().window().maximize();
         ip.clickPlatezhi();
         Thread.sleep(1000);
@@ -33,7 +34,7 @@ public class TinkoffTest {
         zp.verifyCity("Москве");
         Thread.sleep(1000);
         zp.clickZkuMoskva();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         zm.clickOplatitZkuVMoskve();
         Thread.sleep(1000);
         zm.validationCheck();
@@ -41,6 +42,18 @@ public class TinkoffTest {
         zm.clickPlatezhi();
         Thread.sleep(1000);
         pp.searchInput();
+        Thread.sleep(1000);
+        pp.verifyElementIsFirst();
+        Thread.sleep(1000);
+        pp.clickZkuMoskvaDropDown();
+        Thread.sleep(1000);
+        zm.clickPlatezhi();
+        Thread.sleep(1000);
+        pp.clickZkh();
+        Thread.sleep(1000);
+        zp.selectAnotherCity();
+        Thread.sleep(1000);
+        zp.verifyZkhIsNotExists();
 
     }
 }

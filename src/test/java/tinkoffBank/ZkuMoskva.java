@@ -12,7 +12,7 @@ public class ZkuMoskva {
     }
 
     private final WebDriver driver;
-    private final By oplatitZkuVMoskve = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[5]/div/div[2]/div[1]/div/div/div/div[3]/div/ul/li[2]/div/a");
+    private final By oplatitZkuVMoskve = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[5]/div/div[2]/div[1]/div/div/div/div[3]/div/ul/li[2]/div");
     private final By oplatitZkuVMoskveBtn = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[5]/div/div[2]/div[1]/div/div/div/div[4]/div[1]/form/div[6]/div/div[1]/div/div/button");
     private final By kodPoleText = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[5]/div/div[2]/div[1]/div/div/div/div[4]/div[1]/form/div[1]/div/div[2]");
     private final By periodPoleText = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[5]/div/div[2]/div[1]/div/div/div/div[4]/div[1]/form/div[2]/div/div[2]");
