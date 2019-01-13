@@ -28,7 +28,7 @@ public class TinkoffTest {
         driver.get("http://tinkoff.ru");
         driver.manage().window().maximize();
         ip.clickPlatezhi();
-        Thread.sleep(1000);
+        Thread.sleep(1400);
         pp.clickZkh();
         Thread.sleep(1000);
         zp.verifyCity("Москве");
