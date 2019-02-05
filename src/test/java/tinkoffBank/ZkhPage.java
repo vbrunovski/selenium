@@ -15,8 +15,8 @@ public class ZkhPage {
     }
 
     private final WebDriver driver;
-    private final By cityName = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[5]/div/div[2]/div/div/div/div[2]/div/div/div/span/span/span");
-    private final By zkuMoskva = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[5]/div/div[2]/div/div/div/section/ul/li[1]/span[2]/a/span/div");
+    private final By cityName = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[6]/div/div[2]/div/div/div/div[2]/div/div/div/span/span/span");
+    private final By zkuMoskva = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[6]/div/div[2]/div/div/div/section/ul/li[1]/span[2]/a/span/div");
     private final By clickCity = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[5]/div/div[2]/div/div/div/div[2]/div/div/div/span/span/span");
     private final By clickSpb = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[4]/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/span/a");
     public static String zkuText;
@@ -25,6 +25,7 @@ public class ZkhPage {
     public String getZkuText(){
         return this.zkuText;
     }
+
 
     public void verifyCity(String text){
         WebElement city = driver.findElement(cityName);

@@ -10,7 +10,7 @@ public class IndexPage {
     }
 
     private final WebDriver driver;
-    private final By platezhi = By.xpath("//*[@id=\"x1c8a7\"]/div/footer/div[2]/div/div/ul/li[1]/ul/li[6]/span/span/a");
+    private final By platezhi = By.xpath("//*[@id=\"xccb5e\"]/div/footer/div[2]/div/div/ul/li[1]/ul/li[7]/span/span/a");
 
     public void clickPlatezhi(){
         driver.findElement(platezhi).click();

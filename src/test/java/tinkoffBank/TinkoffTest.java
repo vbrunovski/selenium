@@ -27,12 +27,13 @@ public class TinkoffTest {
     public void test1() throws InterruptedException {
         driver.get("http://tinkoff.ru");
         driver.manage().window().maximize();
+        Thread.sleep(2000);
         ip.clickPlatezhi();
         Thread.sleep(1200);
         pp.clickZkh();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         zp.verifyCity("Москве");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         zp.clickZkuMoskva();
         Thread.sleep(2000);
         zm.clickOplatitZkuVMoskve();
