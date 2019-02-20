@@ -15,7 +15,7 @@ public class PlatezhiPage {
         this.driver = driver;
     }
 
-    private final By zkh = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[6]/div/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/a/span/div/div[2]/div/div/div");
+    private final By zkh = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[3]/div/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/a/span/div/div[2]/div/div");
     private final By searchInputField = By.xpath("//*[@id=\"search-and-pay-container\"]/div[2]/div[2]/div/form/div[3]/div/div/div/div/label/div/input");
     private final By clickZkuMoskva =  By.xpath("//*[@id=\"search-and-pay-container\"]/div[2]/div[2]/div/form/div[3]/div/div/div/div[2]/div/div[1]/div/div/div[1]/div/div[1]/div[2]/div");
 

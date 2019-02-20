@@ -12,17 +12,17 @@ public class ZkuMoskva {
     }
 
     private final WebDriver driver;
-    private final By oplatitZkuVMoskve = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[6]/div/div[2]/div[1]/div/div/div/div[3]/div/ul/li[2]/div/a");
-    private final By oplatitZkuVMoskveBtn = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[6]/div/div[2]/div[1]/div/div/div/div[4]/div[1]/form/div[6]/div/div[1]/div/div/button");
+    private final By oplatitZkuVMoskve = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[3]/div/div[2]/div[1]/div/div/div/div[3]/div/ul/li[2]/div/a/span");
+    private final By oplatitZkuVMoskveBtn = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[3]/div/div[2]/div[1]/div/div/div/div[4]/div[1]/form/div[6]/div/div[1]/div/div/button");
     private final By kodPoleText = By.xpath("//*[@id=\"payerCode\"]");
     private final By periodPoleText = By.xpath("//*[@id=\"period\"]");
     private final By summaPoleText = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[6]/div/div[2]/div[1]/div/div/div/div[4]/div[1]/form/div[4]/div/div/div/div/div/div/div/div[1]/label/div/input");
-    private final By platezhi = By.xpath("/html/body/div[1]/div/div/div/div[1]/div[2]/div[2]/footer/div[2]/div/div/ul/li[1]/ul/li[7]/span/span/a");
+    private final By platezhi = By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[2]/footer/div[2]/div/div[2]/ul/li[1]/ul/li[7]/a");
     private String validationText = "Поле обязательное";
 
-    private final By kodPoleTextValidation =  By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[6]/div/div[2]/div[1]/div/div/div/div[4]/div[1]/form/div[1]/div/div[2]");
-    private final By periodPoleTextValidation =  By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[6]/div/div[2]/div[1]/div/div/div/div[4]/div[1]/form/div[2]/div/div[2]");
-    private final By summaPoleTextValidation =  By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[6]/div/div[2]/div[1]/div/div/div/div[4]/div[1]/form/div[4]/div/div/div/div/div/div/div/div[2]");
+    private final By kodPoleTextValidation =  By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[3]/div/div[2]/div[1]/div/div/div/div[4]/div[1]/form/div[1]/div/div[2]");
+    private final By periodPoleTextValidation =  By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[3]/div/div[2]/div[1]/div/div/div/div[4]/div[1]/form/div[2]/div/div[2]");
+    private final By summaPoleTextValidation =  By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div[1]/div[3]/div/div[2]/div[1]/div/div/div/div[4]/div[1]/form/div[4]/div/div/div/div/div/div/div/div[2]");
 
 
     public void clickOplatitZkuVMoskve(){
