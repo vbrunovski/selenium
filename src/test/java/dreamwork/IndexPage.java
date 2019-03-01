@@ -56,4 +56,12 @@ public class IndexPage {
         //System.out.println("Text: " + text.getText());
     }
 
+    public void countMenuItems(){
+        List<WebElement> items = driver.findElements(By.xpath("//*[@id=\"navbar\"]/ul[1]"));
+        for (WebElement ddlList : items)
+        {
+            System.out.println(ddlList.findElements(By.tagName("li")).size());
+        }
+    }
+
 }

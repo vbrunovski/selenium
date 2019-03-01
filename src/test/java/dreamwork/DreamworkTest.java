@@ -28,6 +28,8 @@ public class DreamworkTest {
         ip.verifySearchIsWorking("mongodb");
         Thread.sleep(2000);
         ip.verifyThatBlogPostExists();
+        Thread.sleep(2000);
+        ip.countMenuItems();
     }
 
 }
