@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LibraryTests extends JUnitTestReporter {
+public class LibraryTestsHTML extends JUnitHTMLReporter {
     static WebDriver driver;
     NewBookPage nbp = new NewBookPage(driver);
     CatalogBookPage cbp = new CatalogBookPage(driver);
@@ -17,7 +17,7 @@ public class LibraryTests extends JUnitTestReporter {
     }
 
     @Test
-    public void Test() throws InterruptedException {
+    public void TestName() throws InterruptedException {
         nbp.addNewBook();
         cbp.VerifyBookInList();
     }
