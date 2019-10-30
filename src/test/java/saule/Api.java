@@ -10,7 +10,7 @@ public class Api {
         RestAssured.baseURI = "https://develop.sauledev.com/api/wallets";
 
         String requestBody = "{\n" +
-                "  \"userId\": \"107\",\n" +
+                "  \"userId\": \"117\",\n" +
                 "  \"walletType\": \"USER_REAL\",\n" +
                 "  \"currencyCode\": \"USD\"\n" +
                 "}";
