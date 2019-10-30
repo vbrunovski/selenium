@@ -12,7 +12,7 @@ public class DreamworkTest {
 
     @BeforeClass
     public static void SetUp(){
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\ismyf\\Desktop\\chromedriver_win32\\chromedriver.exe"); //C:\Users\ismyf\Desktop
         System.setProperty("webdriver.gecko.driver","C:\\Users\\User\\Downloads\\geckodriver-v0.21.0-win64\\geckodriver.exe");
         driver = new ChromeDriver();
         //driver = new FirefoxDriver();
