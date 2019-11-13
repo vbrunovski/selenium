@@ -43,4 +43,8 @@ public class TestPage {
         mp.chooseMoscowRegion();
 
     }
+
+    public void test2(){
+        System.out.println("THIS IS TEST2");
+    }
 }
