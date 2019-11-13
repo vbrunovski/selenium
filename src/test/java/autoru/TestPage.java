@@ -44,6 +44,7 @@ public class TestPage {
 
     }
 
+    @Test
     public void test2(){
         System.out.println("THIS IS TEST2");
     }
