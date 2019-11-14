@@ -32,7 +32,7 @@ public class TestPage {
     }
 
     @Test
-    public void test() throws InterruptedException {
+    public void testTest() throws InterruptedException {
         driver.get(URL);
         driver.manage().window().maximize();
         mp.acceptCookie();
@@ -45,7 +45,7 @@ public class TestPage {
     }
 
     @Test
-    public void test2(){
+    public void test2Test(){
         System.out.println("THIS IS TEST2");
     }
 }
