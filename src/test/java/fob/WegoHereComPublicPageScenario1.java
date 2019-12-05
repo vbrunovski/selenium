@@ -17,7 +17,7 @@ public class WegoHereComPublicPageScenario1 {
 
     public void clickPublic() throws InterruptedException {
         driver.findElement(clickPublic).click();
-        Thread.sleep(2000);
+        Thread.sleep(5000);
     }
 
     public void verifyPublicCalculated(){

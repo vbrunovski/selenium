@@ -17,7 +17,7 @@ public class WegoHereComBikePageScenario1 {
 
     public void clickBike() throws InterruptedException {
         driver.findElement(clickBike).click();
-        Thread.sleep(2000);
+        Thread.sleep(5000);
     }
 
     public void verifyBikeCalculated(){

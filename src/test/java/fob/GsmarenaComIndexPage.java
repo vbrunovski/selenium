@@ -2,7 +2,6 @@ package fob;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class GsmarenaComIndexPage {
     private final WebDriver driver;

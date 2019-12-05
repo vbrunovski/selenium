@@ -3,6 +3,7 @@ package fob;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -21,6 +22,7 @@ public class FobTest {
     WegoHereComDrivePageScenario1 scen1Drive = new WegoHereComDrivePageScenario1(driver);
     WegoHereComPublicPageScenario1 scen1Public = new WegoHereComPublicPageScenario1(driver);
     WegoHereComBikePageScenario1 scen1Bike = new WegoHereComBikePageScenario1(driver);
+    WegoHereComCarsharingPageScenario1 scen1Cars = new WegoHereComCarsharingPageScenario1(driver);
 
     WegoHereComIndexPageScenario2 scen2Index = new WegoHereComIndexPageScenario2(driver);
     WegoHereComSignInPageScenario2 scen2Signin = new WegoHereComSignInPageScenario2(driver);
@@ -51,6 +53,8 @@ public class FobTest {
         scen1Public.verifyPublicCalculated();
         scen1Bike.clickBike();
         scen1Bike.verifyBikeCalculated();
+        scen1Cars.clickCarshering();
+        scen1Cars.verifyCarsheringCalculated();
     }
 
     @Test
@@ -73,12 +77,14 @@ public class FobTest {
         driver.get(URL2);
         driver.manage().window().maximize();
         ind.searchMobileCategory();
+        cat.okCookie();
         cat.searchMobilePhone();
         pho.verifySupportsGps();
 
     }
+
     //@AfterClass
     //public static void tearDown(){
-        //driver.quit();
+      //  driver.quit();
     //}
 }

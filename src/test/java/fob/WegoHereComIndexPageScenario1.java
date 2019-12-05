@@ -12,6 +12,7 @@ public class WegoHereComIndexPageScenario1 {
     private final By clickLocation = By.xpath("//*[@id=\"searchbar\"]/div/div[2]/div[1]");
     private final String whereLocation = "Narva";
 
+
     public WegoHereComIndexPageScenario1(WebDriver driver){
         this.driver = driver;
     }

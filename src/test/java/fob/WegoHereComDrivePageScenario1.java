@@ -17,7 +17,7 @@ public class WegoHereComDrivePageScenario1 {
 
     public void clickDrive() throws InterruptedException {
         driver.findElement(clickDrive).click();
-        Thread.sleep(2000);
+        Thread.sleep(5000);
     }
 
     public void verifyDriveCalculated(){

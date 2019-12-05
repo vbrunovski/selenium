@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -48,13 +46,12 @@ public class WegoHereComSignInPageScenario2 {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.elementToBeClickable(collectStarIcon));
         driver.findElement(collectStarIcon).click();
-        //Thread.sleep(1000);
+        //Thread.sleep(2000);
     }
 
-    public void clickDone(){
+    public void clickDone() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.elementToBeClickable(collectStarIcon));
-        driver.findElement(collectStarIcon).click();
+        wait.until(ExpectedConditions.elementToBeClickable(doneBtn));
         driver.findElement(doneBtn).click();
     }
 
@@ -68,10 +65,11 @@ public class WegoHereComSignInPageScenario2 {
 
     public void clickTitle() throws InterruptedException {
         driver.findElement(titleLink).click();
-        Thread.sleep(2000);
     }
 
     public void verifyCollected(){
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(collectedCity));
         WegoHereComIndexPageScenario1 loc = new WegoHereComIndexPageScenario1(driver);
         String city = driver.findElement(collectedCity).getText();
         try {
