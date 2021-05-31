@@ -1,5 +1,5 @@
 package restassured;
-
+/*
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
@@ -34,3 +34,4 @@ public class TC003_GET_REQUEST {
 
     }
 }
+*/

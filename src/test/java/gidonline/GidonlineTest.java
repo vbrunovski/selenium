@@ -1,11 +1,12 @@
 package gidonline;
 
+import bigbank.JUnitHTMLReporter;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class GidonlineTest {
+public class GidonlineTest extends JUnitHTMLReporter {
     static WebDriver driver;
     private final static String URL = "http://gidonline.in";
     HorrorPage hp = new HorrorPage(driver);
@@ -14,7 +15,8 @@ public class GidonlineTest {
 
     @BeforeClass
     public static void SetUp(){
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\User\\Downloads\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\\\Users\\\\ismyf\\\\\\OneDrive\\\\Desktop\\\\chromedriver_win32\\\\chromedriver.exe");
+
         driver = new ChromeDriver();
     }
 

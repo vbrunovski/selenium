@@ -1,3 +1,4 @@
+/*
 package restassured;
 
 import io.restassured.RestAssured;
@@ -45,3 +46,6 @@ public class TC007_GET_REQUEST_AUTHORIZATION {
 
     }
 }
+
+
+ */

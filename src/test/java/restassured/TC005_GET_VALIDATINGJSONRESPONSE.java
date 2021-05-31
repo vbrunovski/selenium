@@ -1,5 +1,5 @@
 package restassured;
-
+/*
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
@@ -29,3 +29,4 @@ public class TC005_GET_VALIDATINGJSONRESPONSE {
 
     }
 }
+*/

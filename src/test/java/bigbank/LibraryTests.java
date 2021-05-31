@@ -12,7 +12,7 @@ public class LibraryTests extends JUnitHTMLReporter {
 
     @BeforeClass
     public static void SetUp(){
-        System.setProperty("webdriver.chrome.driver","C:\\\\Users\\\\ismyf\\\\Desktop\\\\chromedriver_win32\\\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\\\Users\\\\ismyf\\\\\\OneDrive\\\\Desktop\\\\chromedriver_win32\\\\chromedriver.exe");
         driver = new ChromeDriver();
     }
 

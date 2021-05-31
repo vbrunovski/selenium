@@ -1,3 +1,4 @@
+/*
 package restassured;
 
 import io.restassured.RestAssured;
@@ -32,3 +33,5 @@ public class TC006_GET_EXTRACTVALUESOFEACHNODEINJSON {
 
     }
 }
+
+ */

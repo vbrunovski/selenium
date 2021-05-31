@@ -1,5 +1,5 @@
 package datadriventesting_restapi;
-
+/*
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
@@ -10,6 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+
 
 public class DataDrivenTest_AddNewEmployees {
     @Test(dataProvider = "empdataprovider")
@@ -63,6 +64,6 @@ public class DataDrivenTest_AddNewEmployees {
         return empData;
     }
 }
-
+*/
 
 //https://www.youtube.com/watch?v=brFtzAF1vMw&list=PLUDwpEzHYYLuMRzT6LFq4r8DwKZdcqHmY&index=3
